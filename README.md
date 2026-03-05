@@ -21,6 +21,7 @@ The design has been rigorously validated through electronic design automation (E
 * Simulation Results: Waveform showing the 8-bit challenge input and the resulting stable 1-bit response.
 
 🚀 **Future Work**
+
 The project is currently transitioning to FPGA deployment (Zynq) to experimentally evaluate key PUF performance metrics:
 * Uniqueness: Measuring inter-Hamming distance.
 * Reliability: Analyzing intra-Hamming distance under varying conditions
