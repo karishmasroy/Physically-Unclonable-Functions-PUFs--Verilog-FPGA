@@ -1,27 +1,44 @@
-# Physically Unclonable Functions (PUFs) — Verilog & FPGA
-Sem-4 Minor Project | IIIT Naya Raipur
+# 64-bit Arbiter PUF Hardware Security Implementation
+This repository contains the design, implementation, and statistical analysis of a 64-bit Strong Arbiter Physically Unclonable Function (PUF) deployed on FPGA hardware. The project explores the intersection of hardware security, silicon process variation, and architectural mitigation strategies.
 
-📌 **Project Overview**
+## 🚀 **Scaling to 64-bit: Why it Matters**
 
-This repository contains the hardware implementation of delay-based Physically Unclonable Functions (PUFs) designed for hardware security applications. The project focuses on leveraging inherent manufacturing variations in silicon to generate unique, device-specific cryptographic signatures.
+While 8-bit implementations serve as functional proofs-of-concept, scaling to a 64-bit challenge interface is essential for cryptographic robustness.
+* **Expanded Challenge Space:** Moving from 2^8 to 2^{64} challenge-response pairs (CRPs) prevents brute-force database reconstruction.
+* **Strong PUF" Classification:** A 64-bit architecture provides a challenge space so vast it cannot be fully enumerated within the device's lifetime.
+* **Modeling Attack Resistance:** The increased complexity raises the barrier for Machine Learning-based modeling attacks, requiring higher-order data for successful prediction.
 
-🛠️ **Technical Implementation**
+## 🛠️ **Hardware Prototype & Setup**
 
-The project is structured into functional modules and ongoing research components:
-* **Arbiter PUF**: An 8×8 Arbiter PUF implemented with a delay-based race architecture and an 8-bit challenge–response interface.
-*  Architecture: Features programmable delay elements modeled to emulate silicon path variations and a high-speed arbiter to resolve race conditions.
-* **Feed-Forward (FF-PUF) & Double Feed-Forward (DFF-PUF)**: Experimental non-linear architectures currently in the research phase to address path-symmetry and signal-race complexities.
+The design is implemented and validated on the Xilinx Zynq-7000 (ZedBoard) platform.
+**System Architecture**
+* **PUF Core:** 64-stage delay-based race architecture in Verilog.
+*  **Post-Processing:** Integrated 8-input XOR layer to isolate silicon variation from deterministic bias.
+* **Interface:** Custom Python-UART framework for high-throughput CRP acquisition.
 
-🔬 **Simulation & Verification**
 
-The design has been rigorously validated through electronic design automation (EDA) tools:
-* Toolchain: Developed and simulated using **Xilinx Vivado**
-* Verification: Custom Verilog testbenches were utilized to verify functional correctness and perform detailed timing analysis.
-* Waveform Analysis: Timing behavior was inspected through waveforms to ensure proper race condition resolution.
-* Simulation Results: Waveform showing the 8-bit challenge input and the resulting stable 1-bit response.
+https://github.com/user-attachments/assets/a0dc5d02-d012-47f1-aa09-416f8524dc14
 
-🚀 **Future Work**
+## 📊** Performance Metrics**
 
-The project is currently transitioning to FPGA deployment (Zynq) to experimentally evaluate key PUF performance metrics:
-* Uniqueness: Measuring inter-Hamming distance.
-* Reliability: Analyzing intra-Hamming distance under varying conditions
+Statistical evaluation was conducted across 4 FPGAs with 28 experimental da<img width="611" height="150" alt="Screenshot 2026-04-07 093805" src="https://github.com/user-attachments/assets/fbc03577-e426-4315-9371-5ad005037eab" />
+tasets consisting of over 280,000 CRPs.
+<img width="480" height="149" alt="Screenshot 2026-04-10 130900" src="https://github.com/user-attachments/assets/2f5c444d-b09f-4616-8de9-315f564e5ac2" />
+
+## 🔍 **Root Cause Analysis: The "Routing Bias" Problem**
+
+Despite near-ideal uniformity and reliability, Uniqueness and Bit-Aliasing are heavily impacted by the physical constraints of the FPGA fabric.
+**System Architecture**
+* **Deterministic Skew:** The Vivado router prioritizes timing closure over path symmetry, creating fixed sub-nanosecond "Deltas" that favor specific paths across all devices.
+*  **Impact:** These universal routing offsets drown out the unique silicon fingerprint, causing devices to behave as clones (high aliasing).
+
+<img width="611" height="150" alt="Screenshot 2026-04-07 093805" src="https://github.com/user-attachments/assets/47c6998a-b808-4249-887f-1a61c92ee748" />
+
+
+
+## ⚡**Hardware Efficiency**
+* **Logic Footprint:** Minimal utilization of **609 LUTs (1.14% of ZedBoard resources).**
+*  **Power Profile:** Ultra-low active overhead with a dynamic power draw of only **3mW.**
+
+## **🎓 Academic Credits**
+Developed by **Karishma Singha Roy** as part of undergraduate research in Electronics and Communication Engineering at IIIT Naya Raipur.
