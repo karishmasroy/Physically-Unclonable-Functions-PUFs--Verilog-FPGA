@@ -11,6 +11,7 @@ While 8-bit implementations serve as functional proofs-of-concept, scaling to a 
 ## 🛠️ **Hardware Prototype & Setup**
 
 The design is implemented and validated on the Xilinx Zynq-7000 (ZedBoard) platform.
+
 **System Architecture**
 * **PUF Core:** 64-stage delay-based race architecture in Verilog.
 *  **Post-Processing:** Integrated 8-input XOR layer to isolate silicon variation from deterministic bias.
