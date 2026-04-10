@@ -1,0 +1,19 @@
+[1] UNIFORMITY (Ideal: 0.5)
+    Board 1: 0.5013
+    Board 2: 0.5027
+    Board 3: 0.4973
+    Board 4: 0.4916
+Average Uniformity: 0.4982
+
+[2] RELIABILITY (Ideal: 100%)
+    Board 1: 98.56%
+    Board 2: 98.52%
+    Board 3: 98.59%
+    Board 4: 98.41%
+Average Reliability: 98.52%
+
+[3] INTER-DEVICE UNIQUENESS (Ideal: 0.5)
+    Average Uniqueness (HD_inter): 0.1243
+
+[4] BIT ALIASING (Ideal: 0.0)
+    Mean Bias across devices: 0.4259
