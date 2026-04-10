@@ -20,7 +20,7 @@ The design is implemented and validated on the Xilinx Zynq-7000 (ZedBoard) platf
 
 https://github.com/user-attachments/assets/a0dc5d02-d012-47f1-aa09-416f8524dc14
 
-## 📊** Performance Metrics**
+## 📊**Performance Metrics**
 
 Statistical evaluation was conducted across 4 FPGAs with 28 experimental datasets consisting of over 280,000 CRPs.
 <img width="480" height="149" alt="Screenshot 2026-04-10 130900" src="https://github.com/user-attachments/assets/2f5c444d-b09f-4616-8de9-315f564e5ac2" />
